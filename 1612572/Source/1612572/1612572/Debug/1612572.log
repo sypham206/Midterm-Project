@@ -1,0 +1,6 @@
+﻿  main.cpp
+C:\Users\Sy Pham\Desktop\CDTL-MidtermProject\Midterm-Project\1612572\Source\1612572\1612572\main.cpp(18,13): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Sy Pham\Desktop\CDTL-MidtermProject\Midterm-Project\1612572\Source\1612572\1612572\main.cpp(22,41): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Sy Pham\Desktop\CDTL-MidtermProject\Midterm-Project\1612572\Source\1612572\1612572\main.cpp(90,12): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Sy Pham\Desktop\CDTL-MidtermProject\Midterm-Project\1612572\Source\1612572\1612572\main.cpp(94,72): warning C4018:  '<': signed/unsigned mismatch
+  1612572.vcxproj -> C:\Users\Sy Pham\Desktop\CDTL-MidtermProject\Midterm-Project\1612572\Source\1612572\Debug\1612572.exe
