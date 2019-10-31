@@ -15,6 +15,8 @@ int lenOfMonomial(string str)
 void findMonomial(string str, string arrMonomial[MAX], int& len)
 {
 	int pos = 0;
+	// Mảng ban đầu chưa có phần tử, len = 0
+	len = 0;
 	while (pos < str.length())
 	{
 		int p = 0;
