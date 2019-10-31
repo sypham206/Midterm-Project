@@ -132,7 +132,6 @@ int isChild(string child, string parent)
 // In ra biểu đồ Karnaugh
 void showKar(int Kar[4][4])
 {
-	cout << endl;
 	for (int i = 0; i < 4; i++)
 	{
 		cout << endl;
@@ -340,6 +339,6 @@ void findMinimalPolynomial(string str)
 		for (int i = 1; i < lenM; i++)
 			Result = Result + " + " + arrM[i];
 
-		cout << endl << " CT " << iR + 1 << ": " << Result;
+		cout << endl << " -CT " << iR + 1 << ": " << Result;
 	}
 }
