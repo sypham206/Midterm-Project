@@ -1,18 +1,38 @@
 ﻿#include"fVector.h"
 
-/* Hàm chuyển đổi số nguyên dương kiểu string về kiểu int */
+/* Hàm tạo Vector 0
+Tham số truyền vào: Vector A
+Hàm set các giá trị 0 cho Vector A*/
+void setVector(Vector& A)
+{
+	A.degree = MAX_DEGREE;
+	for (int i = 0; i < A.degree; i++)
+		A.value[i] = 0;
+}
+
+/* Hàm chuyển đổi số nguyên kiểu string về kiểu int */
 int stringToInt(string str)
 {
 	int result = 0;
-	for (int i = 0;i<str.length();i++)
+	if (str[0] == '-')
 	{
-		result = result * 10 + int(str[i]) - '0';
+		int tmp = 0;
+		for (int i = 1; i < str.length(); i++)
+		{
+			tmp = tmp * 10 + int(str[i]) - '0';
+		}
+		result = 0 - tmp;
 	}
+	else
+		for (int i = 0; i < str.length(); i++)
+		{
+			result = result * 10 + int(str[i]) - '0';
+		}
 	return result;
 }
 
-/* Hàm chuyển đổi số thực kiểu string về kiểu float */
-float stringToFloat (string str)
+/* Hàm chuyển đổi số thực dương kiểu string về kiểu float */
+float stFloat (string str)
 {
 	float result = 0;
 	// Xác định vị trí dấu chấm
@@ -40,6 +60,23 @@ float stringToFloat (string str)
 			result = result * 10 + int(str[i]) - '0';
 		}
 	}	
+	return result;
+}
+
+/* Hàm chuyển đổi số thực kiểu string về kiểu float */
+float stringToFloat(string str)
+{
+	float result = 0;
+	if (str == "0") return result;
+	if (str[0] == '-')
+	{
+		string abs = "";
+		for (int iS = 1; iS < str.length(); iS++)
+			abs += str[iS];
+		result = stFloat(abs);
+		result = 0 - result;
+	}
+	else result = stFloat(str);
 	return result;
 }
 

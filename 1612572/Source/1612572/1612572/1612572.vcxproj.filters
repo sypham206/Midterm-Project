@@ -24,12 +24,18 @@
     <ClCompile Include="fVector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fMatrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fBool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="fVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fMatrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

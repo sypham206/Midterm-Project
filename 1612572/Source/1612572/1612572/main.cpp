@@ -5,30 +5,31 @@ P1: Hàm Bool: Tìm công thức đa thức tối tiểu
 #include<fstream>
 #include"fBool.h"
 #include"fVector.h"
+#include"fMatrix.h"
 
 int main()
-{
+{	
 	// P1. TÌM CÔNG THỨC ĐA THỨC TỐI TIỂU HÀM BOOL
 
 	cout << "\n\n __________________P1: HAM BOOL__________________ \n";
-	fstream inFile;
+	fstream inFile1;
 	// Biến lưu đường dẫn tới file input
 	string inPath="inputBool.txt";
 	string listBool[MAX];
 	int lenListBool = 0;
 
 	// Mở file, lấy các hàm Bool từ file lưu vào mảng listBool
-	inFile.open(inPath, ios::in);
-	if (inFile.fail())
+	inFile1.open(inPath, ios::in);
+	if (inFile1.fail())
 		cout << "Failed to open this file!" << std::endl;
-	while (!inFile.eof())
+	while (!inFile1.eof())
 	{
 		char temp[255];
-		inFile.getline(temp, 255);
+		inFile1.getline(temp, 255);
 		listBool[lenListBool] = temp;
 		lenListBool++;
 	}
-	inFile.close();
+	inFile1.close();
 
 	// Với mỗi hàm Bool trong mảng listBool, in ra các biểu đồ Karnaugh tương ứng và các công thức đa thức tối tiểu của nó
 	for (int i = 0; i < lenListBool; i++)
@@ -72,7 +73,7 @@ int main()
 		listLine[lenLine] = temp;
 		lenLine++;
 	}
-	inFile.close();
+	inFile2.close();
 	
 	// Xử lí dữ liệu trong mảng listLine
 	// Dòng 1: Bậc của vector
@@ -121,8 +122,133 @@ int main()
 		cout << "\n ------------------------------------------------";
 	}
 
+	// P3. PHÉP TOÁN TRÊN MA TRẬN
+
+	cout << "\n\n ___________________P3: MATRIX___________________ \n";
+	cout << "\n ------------------------------------------------";	
+	fstream inFile3;
+	Matrix p, q;
+	// Biến lưu đường dẫn tới file input
+	string inPath3 = "inputMatrix.txt";
+	string listRow[MAX_MATRIX];	
+	int lenRow = 0;
+
+	// Mở file, lấy các giá trị trong file lưu vào mảng listRow ( các dòng có index từ 1->n, index 0 lưu bậc của ma trận
+	inFile3.open(inPath3, ios::in);
+	if (inFile3.fail())
+		cout << "Failed to open this file!" << std::endl;
+	while (!inFile3.eof())
+	{
+		char temp[255];
+		inFile3.getline(temp, 255);
+		listRow[lenRow] = temp;
+		lenRow++;
+	}
+	inFile3.close();
+
+	// Xử lí dữ liệu trong mảng listRow
+	// Dòng 1: Lấy ra kích thước ma trận
+	string sizeMatrix[MAX_MATRIX];
+	int s = 0;
+	findValue(listRow[0], sizeMatrix, s);
+	if (s != 2)
+	{
+		setMatrix(p);
+		cout << "\n File khong hop le";
+	}
+	else
+	{
+		p.N = stringToInt(sizeMatrix[0]);
+		p.M = stringToInt(sizeMatrix[1]);
+	}
+
+	// Kiểm tra xem ma trận thứ nhất (p) có vuông không
+	if (p.N == p.M)
+	{
+		// Lưu giá trị cấp ma trận
+		int level = p.N;
+		// Lấy ra từng dòng	của ma trận thứ nhất (p)
+		for (int i = 1; i <= level; i++) 
+		{	// 
+			string row[MAX_MATRIX];
+			int lenR = 0;
+			findValue(listRow[i], row, lenR);
+			if (lenR == level)
+				for (int j = 0; j < lenR; j++)
+					p.a[i - 1][j] = stringToFloat(row[j]);
+			else
+				// Số phần tử không đúng với cấp ma trận	
+			{
+				setMatrix(p);
+				cout << "\n File khong hop le";
+			}
+		}
+		// Lấy ra kích thước ma trận thứ hai (q)
+		string sizeMatrix2[MAX_MATRIX];
+		int s2 = 0;
+		findValue(listRow[level + 1], sizeMatrix2, s2);
+		if (s2 != 2)
+		{
+			setMatrix(q);
+			cout << "\n File khong hop le";
+		}
+		else
+		{
+			q.N = stringToInt(sizeMatrix2[0]);
+			q.M = stringToInt(sizeMatrix2[1]);
+		}
+		// Lấy ra từng dòng	của ma trận thứ hai (q)
+		for (int i = level + 2; i < level + 2 + q.N; i++)
+		{	// 
+			string row[MAX_MATRIX];
+			int lenR = 0;
+			findValue(listRow[i], row, lenR);
+			if (lenR == q.M)
+				for (int j = 0; j < lenR; j++)
+					q.a[i - level - 2][j] = stringToFloat(row[j]);
+			else
+				// Số phần tử không đúng với cấp ma trận	
+			{
+				setMatrix(q);
+				cout << "\n File khong hop le";
+			}
+		}
+
+	}
+	
+	// In kết quả
+	cout << "\n MA TRAN P:";
+
+	printMatrix(p);
+	cout << "\n DINH THUC MA TRAN: " << detMatrix(p);
+	if (detMatrix(p) != 0)
+	{
+		cout << "\n MA TRAN NGHICH DAO:";
+		printMatrix(inverseMatrix(p));
+	}
+	else
+	{
+		cout << "\n MA TRAN KHONG KHA NGHICH";
+	}
+	cout << "\n MA TRAN Q:";
+	printMatrix(q);
+
+	cout << "\n ------------------------------------------------";
+	/*
+	cout << "\n Nhap ma tran: \n";
+	cout << "\n Nhap cap ma tran: ";
+	cin >> p.N;
+	for(int i=0;i<p.N;i++)
+		for (int j = 0; j < p.N; j++)
+		{
+			cout << "\n Nhap p[" << i + 1 << "][" << j + 1 << "]: ";
+			cin >> p.a[i][j];
+		}
+	*/	
+	
+
 	// Phần footer chương trình
-	cout << "\n\n Tks for watching!";
+	cout << "\n\n THANK YOU !";
 	cout << endl << endl;
 	system("pause");
 	return 0;

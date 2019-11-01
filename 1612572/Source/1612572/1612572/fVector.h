@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include<iostream>
 using namespace std;
-#define MAX_DEGREE 50
+#define MAX_DEGREE 100
 #define MAX_VALUE 100
 
 /* Định nghĩa vector bậc N (degree) */
@@ -11,10 +11,20 @@ struct Vector
 	float value[MAX_DEGREE];
 };
 
-/* Hàm chuyển đổi số nguyên dương kiểu string về kiểu int
+/* Hàm tạo Vector 0
+Tham số truyền vào: Vector A
+Hàm set các giá trị 0 cho Vector A*/
+void setVector(Vector &A);
+
+/* Hàm chuyển đổi số nguyên kiểu string về kiểu int
 Tham số truyền vào: số nguyên dương kiểu string
 Trả về kết quả là số nguyên dương kiểu int */
 int stringToInt(string str);
+
+/* Hàm chuyển đổi số thực dương kiểu string về kiểu float
+Tham số truyền vào: số thực dương kiểu string
+Trả về kết quả là số thực dương kiểu float */
+float stFloat(string str);
 
 /* Hàm chuyển đổi số thực kiểu string về kiểu float
 Tham số truyền vào: số thực kiểu string
