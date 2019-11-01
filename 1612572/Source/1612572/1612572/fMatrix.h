@@ -54,4 +54,4 @@ int findRank(Matrix pMatrix);
 /* Hàm tìm hạng của ma trận
 Tham số truyền vào: ma trận pMatrix
 Trả về kết quả nguyên là hạng của ma trận pMatrix */
-int rankMatrix(Matrix pMatrix);
+int findRankMatrix(Matrix pMatrix);

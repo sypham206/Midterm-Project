@@ -230,7 +230,7 @@ int findRank(Matrix pMatrix)
 }
 
 /* Hàm tìm hạng của ma trận */
-int rankMatrix(Matrix pMatrix)
+int findRankMatrix(Matrix pMatrix)
 {
 	// Hạng của ma trận không thể lớn hơn số hàng, số cột của ma trận
 	int rank = pMatrix.N;
