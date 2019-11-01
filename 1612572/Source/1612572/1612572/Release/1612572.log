@@ -1,0 +1,8 @@
+﻿  main.cpp
+C:\Users\Sy Pham\Desktop\CDTL-MidtermProject\Midterm-Project\1612572\Source\1612572\1612572\main.cpp(104,9): warning C4101:  'c': unreferenced local variable
+  Generating code
+  1 of 211 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  1612572.vcxproj -> C:\Users\Sy Pham\Desktop\CDTL-MidtermProject\Midterm-Project\1612572\Source\1612572\Release\1612572.exe

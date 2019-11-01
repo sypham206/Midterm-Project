@@ -1,6 +1,15 @@
 ﻿/*
 P1: Hàm Bool: Tìm công thức đa thức tối tiểu
-*/
+P2: Vector: Phép cộng, phép nhân với hằng số 
+P3: Ma trận: 
++ Tìm định thức của ma trận
++ Nghịch đảo ma trận.
++ Tích hai ma trận.
++ Tìm hạng của ma trận.
++ Hệ phương trình tuyến tính (chưa hoàn thành)
+
+- Chương trình chạy theo dữ liệu từ các file inputBool.txt inputVector.txt inputMatrix.txt trong thư mục chương trình */
+
 #include<iostream>
 #include<fstream>
 #include"fBool.h"
@@ -213,38 +222,29 @@ int main()
 				cout << "\n File khong hop le";
 			}
 		}
-
 	}
 	
 	// In kết quả
 	cout << "\n MA TRAN P:";
 
 	printMatrix(p);
-	cout << "\n DINH THUC MA TRAN: " << detMatrix(p);
+	cout << "\n * DINH THUC MA TRAN: " << detMatrix(p);
+	cout << "\n * HANG CUA MA TRAN: " << findRank(p);
+
 	if (detMatrix(p) != 0)
 	{
-		cout << "\n MA TRAN NGHICH DAO:";
+		cout << "\n * MA TRAN NGHICH DAO:";
 		printMatrix(inverseMatrix(p));
 	}
 	else
 	{
-		cout << "\n MA TRAN KHONG KHA NGHICH";
+		cout << "\n * MA TRAN KHONG KHA NGHICH";
 	}
-	cout << "\n MA TRAN Q:";
+	cout << "\n\n MA TRAN Q:";
 	printMatrix(q);
-
+	cout << "\n\n MA TRAN QxP:";
+	printMatrix(mulMatrix(q, p));
 	cout << "\n ------------------------------------------------";
-	/*
-	cout << "\n Nhap ma tran: \n";
-	cout << "\n Nhap cap ma tran: ";
-	cin >> p.N;
-	for(int i=0;i<p.N;i++)
-		for (int j = 0; j < p.N; j++)
-		{
-			cout << "\n Nhap p[" << i + 1 << "][" << j + 1 << "]: ";
-			cin >> p.a[i][j];
-		}
-	*/	
 	
 
 	// Phần footer chương trình

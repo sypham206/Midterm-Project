@@ -40,3 +40,18 @@ Matrix inverseMatrix(Matrix pMatrix);
 Tham số truyền vào: ma trận x và ma trận y
 Trả về kết quả ma trận là tích của 2 ma trận truyền vào */
 Matrix mulMatrix(Matrix x, Matrix y);
+
+/* Hàm tạo các ma trận con
+Tham số truyền vào: ma trận t, mảng danh sách ma trận con, độ dài mảng
+Hàm tăng thêm số lượng ma trận con trong mảng, đồng thời cập nhập độ dài mảng */
+void createChildMatrix(Matrix t, Matrix listChild[100], int& len);
+
+/* Hàm tìm hạng của ma trận vuông
+Tham số truyền vào: ma trận pMatrix
+Trả về kết quả nguyên là hạng của ma trận pMatrix */
+int findRank(Matrix pMatrix);
+
+/* Hàm tìm hạng của ma trận
+Tham số truyền vào: ma trận pMatrix
+Trả về kết quả nguyên là hạng của ma trận pMatrix */
+int rankMatrix(Matrix pMatrix);
